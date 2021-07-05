@@ -5,7 +5,7 @@ resource AIBVMTemplateWin 'Microsoft.VirtualMachineImages/imageTemplates@2020-02
   identity: {
     type: 'UserAssigned'
     userAssignedIdentities:{
-      ${resourceId(Microsoft.ManagedIdentity/userAssignedIdentities,${3:'REQUIRED'})}: {}
+      resourceId(Microsoft.ManagedIdentity/userAssignedIdentities,${3:'REQUIRED'}): {}
     }
   }
   properties: {
@@ -13,10 +13,10 @@ resource AIBVMTemplateWin 'Microsoft.VirtualMachineImages/imageTemplates@2020-02
     vmProfile: {
         vmSize: ${5:'Standard_D2_v2'}
         }
-  }
+    }
   source: {
-    type: '${6|PlatformImage,ManagedImage,SharedImageVersion|}'
-  }
+    type: ${6|PlatformImage,ManagedImage,SharedImageVersion|}
+    }
   customize: [ 
     {
       type: 'WindowsRestart'
@@ -36,7 +36,7 @@ resource AIBVMTemplateWin 'Microsoft.VirtualMachineImages/imageTemplates@2020-02
   ]
   distribute: [
     {
-      type: '${7|managedImage,sharedImage,VHD|}'
+      type: ${7|managedImage,sharedImage,VHD|}
       runOutputName: ${8:'runOutputname'}
     }  
   ]
