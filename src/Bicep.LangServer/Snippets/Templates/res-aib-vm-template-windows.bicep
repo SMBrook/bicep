@@ -5,7 +5,7 @@ resource AIBVMTemplateWin 'Microsoft.VirtualMachineImages/imageTemplates@2020-02
   identity: {
     type: 'UserAssigned'
     userAssignedIdentities:{
-      ${resourceId(Microsoft.ManagedIdentity/userAssignedIdentities,${3:'REQUIRED'}}: {}
+      ${resourceId(Microsoft.ManagedIdentity/userAssignedIdentities,${3:'REQUIRED'})}: {}
     }
   }
   properties: {
